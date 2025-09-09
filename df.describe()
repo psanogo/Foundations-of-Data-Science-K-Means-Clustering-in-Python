@@ -1,0 +1,39 @@
+def calculate_mean(data_column):
+    return sum(data_column) / len(data_column)
+
+def calculate_std_dev(data_column, mean_val):
+    variance = sum([(x - mean_val) ** 2 for x in data_column]) / (len(data_column) - 1) # Sample standard deviation
+    return variance ** 0.5
+
+# Transpose data to get columns (features)
+features_data = list(zip(*banknote_data)) # This will give us (variance_col, skewness_col, kurtosis_col, entropy_col)
+
+feature_names = ['Variance', 'Skewness', 'Kurtosis', 'Entropy']
+stats = {}
+
+print("Statistical Measures:")
+for i, feature_col in enumerate(features_data):
+    name = feature_names[i]
+    mean_val = calculate_mean(feature_col)
+    std_dev_val = calculate_std_dev(feature_col, mean_val)
+    stats[name] = {'mean': mean_val, 'std_dev': std_dev_val}
+    print(f"  {name}:")
+    print(f"    Mean: {mean_val:.4f}")
+    print(f"    Std Dev: {std_dev_val:.4f}")
+
+"""
+Expected output for a larger, more representative dataset might look like:
+Statistical Measures:
+  Variance:
+    Mean: 0.4339
+    Std Dev: 2.8427
+  Skewness:
+    Mean: 1.9223
+    Std Dev: 5.8690
+  Kurtosis:
+    Mean: 1.3976
+    Std Dev: 4.3101
+  Entropy:
+    Mean: -1.1917
+    Std Dev: 2.1017
+"""
