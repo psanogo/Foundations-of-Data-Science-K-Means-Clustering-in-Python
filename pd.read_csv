@@ -1,0 +1,20 @@
+# Simulate the Banknote Authentication Dataset
+# Features: Variance, Skewness, Kurtosis, Entropy
+# Label: 0 (Authentic), 1 (Forged) - We'll ignore the label for K-Means suitability evaluation
+banknote_data = [
+    [0.999980, 1.050410, -0.669560, 0.449760],  # Example 1: Authentic-like
+    [0.999990, 1.050000, -0.669000, 0.449000],  # Example 2: Authentic-like
+    [-0.999980, -1.050410, 0.669560, -0.449760], # Example 3: Forged-like
+    [-1.000000, -1.050000, 0.670000, -0.450000], # Example 4: Forged-like
+    [0.000000, 0.000000, 0.000000, 0.000000],   # Example 5: Middle ground / Noise
+    [0.500000, 0.500000, -0.200000, 0.100000],  # Example 6: More authentic-like
+    [-0.500000, -0.500000, 0.200000, -0.100000], # Example 7: More forged-like
+    [0.800000, 0.900000, -0.500000, 0.300000],
+    [-0.800000, -0.900000, 0.500000, -0.300000],
+    [0.100000, 0.200000, -0.050000, 0.020000],
+]
+
+# For actual loading, you would typically use pandas:
+# import pandas as pd
+# df = pd.read_csv('banknote_authentication.txt', header=None, names=['variance', 'skewness', 'kurtosis', 'entropy', 'class'])
+# banknote_features = df[['variance', 'skewness', 'kurtosis', 'entropy']] # Features for K-Means
